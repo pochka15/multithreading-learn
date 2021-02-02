@@ -1,12 +1,10 @@
 package task2.reader;
 
-import task2.reader.actions.Action;
-
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 //import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+
 
 class StateMachine<
         St extends Enum<St>,

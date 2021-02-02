@@ -9,10 +9,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile("junit", "junit", "4.12")
-}
-
 tasks.register<JavaExec>("problem1") {
     description = "Printing threads names"
     main = "task1.Task1"

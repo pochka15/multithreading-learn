@@ -1,4 +1,4 @@
-package task2.reader.actions;
+package task2.reader;
 
 @FunctionalInterface
 public interface Action {
