@@ -2,6 +2,7 @@ package task2.reader;
 
 import task2.Book;
 import task2.BookHandler;
+import task2.SynchronizedBookContainer;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,14 @@ public class Reader implements BookHandler, Runnable {
     private int availableBooksAmount;
 
 
+    /**
+     * ctor
+     *
+     * @param containers        a list of containers which will be used to read books
+     * @param booksToReadAmount the positive amount of books which should be read from the containers list
+     */
     public Reader(List<SynchronizedBookContainer> containers, int booksToReadAmount) {
+        assert (booksToReadAmount > 0);
         this.containers = containers;
         this.booksToReadAmount = booksToReadAmount;
         stm = new StateMachine<>(State.WAITING, Map.of(
@@ -66,6 +74,7 @@ public class Reader implements BookHandler, Runnable {
 
     private void readNextBook() {
         containers.get(alreadyReadBooksAmount).useBook(book -> {
+//            Fake reading of the book by using sleep
             sleepRandomTime(100);
             System.out.format("%40s\n", Thread.currentThread().getName() + ": " + book);
         });
@@ -81,6 +90,7 @@ public class Reader implements BookHandler, Runnable {
     @Override
     public void run() {
         synchronized (this) {
+//            Set the initial availableBooksAmount when the thread is run
             availableBooksAmount = containers.size();
             if (shouldWait()) waitUntilBookIsAdded();
         }

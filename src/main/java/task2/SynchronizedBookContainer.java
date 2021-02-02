@@ -1,7 +1,4 @@
-package task2.reader;
-
-import task2.Book;
-import task2.BookHandler;
+package task2;
 
 public class SynchronizedBookContainer {
     private final Book book;

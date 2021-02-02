@@ -1,7 +1,6 @@
 package task2;
 
 import task2.reader.Reader;
-import task2.reader.SynchronizedBookContainer;
 
 import java.util.ArrayList;
 import java.util.Collections;
